@@ -1,17 +1,16 @@
 {
-    "version": "1.0.0",
-    "summary": "Tufte plots in SVG and Elm! (fork)",
-    "repository": "https://github.com/mariohuizar/elm-plot.git",
+    "version": "2.2.0",
+    "summary": "Customizable svg ploting elements",
+    "repository": "https://github.com/terezka/elm-plot.git",
     "license": "BSD3",
     "source-directories": [
         "./src",
-        "./docs/src"
+        "./docs"
     ],
     "exposed-modules": [
         "Plot"
     ],
     "dependencies": {
-        "debois/elm-dom": "1.2.3 <= v < 2.0.0",
         "elm-lang/core": "5.0.0 <= v < 6.0.0",
         "elm-lang/html": "2.0.0 <= v < 3.0.0",
         "elm-lang/svg": "2.0.0 <= v < 3.0.0",

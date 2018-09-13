@@ -40,7 +40,7 @@
 .hljs-symbol,
 .hljs-bullet,
 .hljs-addition {
-  color: #8959a8;
+  color: #03a9f4;
 }
 
 /* Tomorrow Blue */
@@ -58,7 +58,9 @@
 .hljs {
   display: block;
   overflow-x: auto;
+  background: #fff9f2;
   color: #4d4d4c;
+  padding: 0.5em;
 }
 
 .hljs-emphasis {

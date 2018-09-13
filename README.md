@@ -1,34 +1,38 @@
 # Elm Plot
 
-Plot stuff in SVG with Elm! Go check it out [here](https://terezka.github.io/elm-plot).
+Plot stuff in svg with Elm!
+
+[![Build Status](https://travis-ci.org/terezka/elm-plot.svg?branch=master)](https://travis-ci.org/terezka/elm-plot)
+
+![alt tag](https://raw.githubusercontent.com/terezka/elm-plot/master/example.png)
 
 ## Overview
 
-So, in the spirit of Elm which, with its many opinions, aims to guide you towards elegant architecture, I've made this opinionated plotting library aimed at guiding you towards more elegant and expressive plots! Of course, it's not just my own preferences I impose on you, but yet another straight (?) white guy called [Edward Tufte](https://en.wikipedia.org/wiki/Edward_Tufte), who wrote the book [The Visual Display of Quantitative Information](https://www.edwardtufte.com/tufte/books_vdqi), and had a lot of great ideas on how to make plots more readable. However, if you find that these opinions are keeping you from doing something incredibly vital, then let's [talk about it](https://elmlang.slack.com/messages/elm-plot) and see if it makes sense to allow it.
-
-> Graphical excellence is that which gives to the viewer the greatest number of ideas in the shortest time with the least ink in the smallest space. - Edward Tufte
+Currently, this library can draw line and area series, grids, axis' with easily configurable ticks and labels.
 
 ### What does the api look like?
 
-Something like this:
-
 ```elm
     main =
-      viewSeries
-        [ area (List.map (\{ x, y } -> circle x y)) ]
-        [ { x = 0, y = 1 }
-        , { x = 2, y = 2 }
-        , { x = 3, y = 3 }
-        , { x = 4, y = 5 }
-        , { x = 5, y = 8 }
-        ]
+		plot
+			[ size ( 600, 250 ), padding ( 0, 40 ) ]
+			[ verticalGrid
+				[ gridMirrorTicks
+				, gridStyle [ ( "stroke", "blue" ) ]
+				]
+			, horizontalGrid
+				[ gridValues [ 10, 20, 30, 40 ]
+				, gridStyle [ ( "stroke", "blue" ) ]
+				]
+			, xAxis [ axisStyle [ ( "stroke", "grey" ) ] ]
+			, line [ lineStyle [ ( "stroke", "red" ) ] ] data1
+			, area [ areaStyle [ ( "fill", "deeppink" ) ] ] data2
+			]
 ```
 
-You're welcome to take a look at the docs folder for more [examples](https://github.com/terezka/elm-plot/tree/master/docs/src)!
+### You need something?
 
-### Missing something?
-
-Let me know! Open an issue (or PR) or write in [slack](https://elmlang.slack.com/messages/elm-plot). Please don't hesitate, I'm happy to answer any questions or receive feedback!
+Let me know! Open an issue (or PR) or write at #elm-plot in the elm-lang's [slack](http://elmlang.herokuapp.com). I focus on meeting my own needs as well as to that of the community, so please don't hesistate! :sparkles:
 
 ## Development
 
@@ -36,15 +40,20 @@ Let me know! Open an issue (or PR) or write in [slack](https://elmlang.slack.com
 
 ```elm
 elm package install
+```
+
+### Run
+
+```
 elm-reactor
 ```
 
-and open [docs](https://terezka.github.io/elm-plot/) (The docs contain a bunch of examples convenient for developing).
+and open [example](http://localhost:8000/examples/PlotExample.elm)
 
 ### Compile the Docs
 
 ```
-elm-live docs/src/Docs.elm --output=docs/docs.js
+elm-make docs/Docs.elm --output=docs/docs.js
 ```
 
 ### Tests
